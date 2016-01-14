@@ -17,6 +17,7 @@
     tabType: "soft"
   "exception-reporting":
     userId: "70c999fe-be2b-a2d7-f6b3-1fb6a81372e3"
+  "linter-pep8": {}
   "python-tools": {}
   welcome:
     showOnStartup: false
