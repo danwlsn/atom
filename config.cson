@@ -2,6 +2,9 @@
   autosave:
     enabled: true
   core:
+    disabledPackages: [
+      "vim-mode"
+    ]
     projectHome: "/Users/wilson/_dev"
     themes: [
       "one-dark-ui"
@@ -19,5 +22,7 @@
     userId: "70c999fe-be2b-a2d7-f6b3-1fb6a81372e3"
   "linter-pep8": {}
   "python-tools": {}
+  "vim-mode":
+    useClipboardAsDefaultRegister: true
   welcome:
     showOnStartup: false
