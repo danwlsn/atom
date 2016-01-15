@@ -1,4 +1,5 @@
 "*":
+  "autocomplete-python": {}
   autosave:
     enabled: true
   core:
@@ -11,6 +12,7 @@
       "base16-tomorrow-dark-theme"
     ]
   editor:
+    autoIndentOnPaste: false
     fontFamily: "Menlo"
     invisibles: {}
     showIndentGuide: true
@@ -24,5 +26,9 @@
   "python-tools": {}
   "vim-mode":
     useClipboardAsDefaultRegister: true
+  "vim-mode-plus": {}
   welcome:
     showOnStartup: false
+".django.python.source":
+  editor:
+    autoIndentOnPaste: true
