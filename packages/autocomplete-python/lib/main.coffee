@@ -18,7 +18,8 @@ module.exports =
       description: '''Automatically complete function arguments after typing
       left parenthesis character. Use completion key to jump between
       arguments. See `autocomplete-python:complete-arguments` command if you
-      want to trigger argument completions manually.'''
+      want to trigger argument completions manually. See README if it does not
+      work for you.'''
     pythonPaths:
       type: 'string'
       default: ''
@@ -30,11 +31,13 @@ module.exports =
       automatically look for virtual environments inside of your project and
       try to use them as well as try to find global python executable. If you
       use this config, automatic lookup will have lowest priority.
-      Use `$PROJECT` substitution for project-specific paths to point on
-      executables in virtual environments.
-      For example: `$PROJECT/venv/bin/python3;/usr/bin/python`.
-      Such config will fall back on `/usr/bin/python` for projects without
-      `venv`.
+      Use `$PROJECT` or `$PROJECT_NAME` substitution for project-specific
+      paths to point on executables in virtual environments.
+      For example:
+      `/Users/name/.virtualenvs/$PROJECT_NAME/bin/python;$PROJECT/venv/bin/python3;/usr/bin/python`.
+      Such config will fall back on `/usr/bin/python` for projects not presented
+      with same name in `.virtualenvs` and without `venv` folder inside of one
+      of project folders.
       If you are using python3 executable while coding for python2 you will get
       python2 completions for some built-ins.'''
     extraPaths:
@@ -43,10 +46,13 @@ module.exports =
       order: 4
       title: 'Extra Paths For Packages'
       description: '''Semicolon separated list of modules to additionally
-      include for autocomplete. You can use `$PROJECT` substitution here to
-      include project specific folders like virtual environment.
+      include for autocomplete. You can use same substitutions as in
+      `Python Executable Paths`.
       Note that it still should be valid python package.
-      For example: `$PROJECT/env/lib/python2.7/site-packages`.
+      For example:
+      `$PROJECT/env/lib/python2.7/site-packages`
+      or
+      `/User/name/.virtualenvs/$PROJECT_NAME/lib/python2.7/site-packages`.
       You don't need to specify extra paths for libraries installed with python
       executable you use.'''
     caseInsensitiveCompletion:

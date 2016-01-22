@@ -50,4 +50,15 @@ See [releases](https://github.com/sadovnychyi/autocomplete-python/releases) for 
   * Create symlink to venv from your project root
     * OR
   * Add virtualenv folder as additional project root
+    * OR
+  * Use a virtualenv with the same name as the folder name of your project and use $PROJECT_NAME variable to set path to python executable.
+  You can use same variable to set extra paths as well. For example:
+  ```
+  /Users/name/.virtualenvs/$PROJECT_NAME/bin/python3.4
+  ```
   * See issue [#143](https://github.com/sadovnychyi/autocomplete-python/issues/143)
+* No argument completion after I type left parenthesis character
+  * Likely this is because you have non standard keyboard layout.
+  Try to install the keyboard-localization package from: https://atom.io/packages/keyboard-localization
+  and use keymap generator to check what unicode character being generated after you type `(`.
+  Currently we trigger argument completion only on `U+0028`, `U+0038` and `U+0039`.

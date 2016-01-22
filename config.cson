@@ -1,4 +1,6 @@
 "*":
+  "atom-spotify2":
+    showEqualizer: true
   "autocomplete-python": {}
   autosave:
     enabled: true
@@ -14,6 +16,7 @@
   editor:
     autoIndentOnPaste: false
     fontFamily: "Menlo"
+    fontSize: 12
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -22,7 +25,10 @@
     tabType: "soft"
   "exception-reporting":
     userId: "70c999fe-be2b-a2d7-f6b3-1fb6a81372e3"
+  linter:
+    errorPanelHeight: 94
   "linter-pep8": {}
+  "linter-scss-lint": {}
   "python-tools": {}
   "vim-mode":
     useClipboardAsDefaultRegister: true

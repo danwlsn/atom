@@ -173,8 +173,10 @@ module.exports =
     eventId = "#{editor.displayBuffer.id}.#{eventName}"
     if grammar.scopeName == 'source.python'
       disposable = @_addEventListener editor, eventName, (e) =>
-        if e.keyIdentifier == 'U+0028' or (e.keyIdentifier == 'U+0039' and
-                                           e.shiftKey)
+        qwertyBracket = 'U+0028'
+        germanBracket = 'U+0038'
+        otherBracket = 'U+0039'
+        if e.keyIdentifier in [qwertyBracket, germanBracket, otherBracket]
           log.debug 'Trying to complete arguments on keyup event', e
           @_completeArguments(editor, editor.getCursorBufferPosition())
       @disposables.add disposable
@@ -261,12 +263,8 @@ module.exports =
       bufferPosition.column].join()).digest('hex')
 
   _generateRequestConfig: ->
-    extraPaths = []
-    for p in atom.config.get('autocomplete-python.extraPaths').split(';')
-      for project in atom.project.getPaths()
-        modified = p.replace(/\$PROJECT/i, project)
-        if modified not in extraPaths
-          extraPaths.push(modified)
+    extraPaths = InterpreterLookup.applySubstitutions(
+      atom.config.get('autocomplete-python.extraPaths').split(';'))
     args =
       'extraPaths': extraPaths
       'useSnippets': atom.config.get('autocomplete-python.useSnippets')
@@ -402,4 +400,5 @@ module.exports =
 
   dispose: ->
     @disposables.dispose()
-    @provider.kill()
+    if @provider
+      @provider.kill()
