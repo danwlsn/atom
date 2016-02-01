@@ -16,7 +16,7 @@
   editor:
     autoIndentOnPaste: false
     fontFamily: "Menlo"
-    fontSize: 12
+    fontSize: 13
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -26,9 +26,13 @@
   "exception-reporting":
     userId: "70c999fe-be2b-a2d7-f6b3-1fb6a81372e3"
   linter:
-    errorPanelHeight: 94
-  "linter-pep8": {}
+    errorPanelHeight: 101
+  "linter-pep8":
+    ignoreErrorCodes: [
+      "E501"
+    ]
   "linter-scss-lint": {}
+  minimap: {}
   "python-tools": {}
   "vim-mode":
     useClipboardAsDefaultRegister: true
