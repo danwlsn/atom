@@ -1,5 +1,13 @@
 ## Changelog
 
+### 5.13.0
+- Add keyboard support for git log view (@aki77)[PR#389](https://github.com/akonwi/git-plus/pull/389)
+
+### 5.12.3
+- Fix [#387](https://github.com/akonwi/git-plus/issues/387)
+- Fix [#383](https://github.com/akonwi/git-plus/issues/383)
+- Fix [#369](https://github.com/akonwi/git-plus/issues/369)
+
 ### 5.12.1
 - Merge [pr #380](https://github.com/akonwi/git-plus/issues/380)
 - Merge [pr #381](https://github.com/akonwi/git-plus/issues/381)

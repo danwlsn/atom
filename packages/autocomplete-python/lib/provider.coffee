@@ -173,10 +173,12 @@ module.exports =
     eventId = "#{editor.displayBuffer.id}.#{eventName}"
     if grammar.scopeName == 'source.python'
       disposable = @_addEventListener editor, eventName, (e) =>
-        qwertyBracket = 'U+0028'
-        germanBracket = 'U+0038'
-        otherBracket = 'U+0039'
-        if e.keyIdentifier in [qwertyBracket, germanBracket, otherBracket]
+        bracketIdentifiers =
+          'U+0028': 'qwerty'
+          'U+0038': 'german'
+          'U+0035': 'azerty'
+          'U+0039': 'other'
+        if e.keyIdentifier of bracketIdentifiers
           log.debug 'Trying to complete arguments on keyup event', e
           @_completeArguments(editor, editor.getCursorBufferPosition())
       @disposables.add disposable
@@ -280,6 +282,8 @@ module.exports =
   _completeArguments: (editor, bufferPosition, force) ->
     useSnippets = atom.config.get('autocomplete-python.useSnippets')
     if not force and useSnippets == 'none'
+      atom.commands.dispatch(document.querySelector('atom-text-editor'),
+                             'autocomplete-plus:activate')
       return
     scopeDescriptor = editor.scopeDescriptorForBufferPosition(bufferPosition)
     scopeChain = scopeDescriptor.getScopeChain()
@@ -291,6 +295,10 @@ module.exports =
     # we don't want to complete arguments inside of existing code
     lines = editor.getBuffer().getLines()
     line = lines[bufferPosition.row]
+    prefix = line.slice(bufferPosition.column - 1, bufferPosition.column)
+    if prefix isnt '('
+      log.debug 'Ignoring argument completion with prefix', prefix
+      return
     suffix = line.slice bufferPosition.column, line.length
     if not /^(\)(?:$|\s)|\s|$)/.test(suffix)
       log.debug 'Ignoring argument completion with suffix', suffix
@@ -310,7 +318,7 @@ module.exports =
       @requests[payload.id] = editor
 
   _fuzzyFilter: (candidates, query) ->
-    if candidates.length isnt 0 and query not in [' ', '.']
+    if candidates.length isnt 0 and query not in [' ', '.', '(']
       filter ?= require('fuzzaldrin-plus').filter
       candidates = filter(candidates, query, key: 'text')
     return candidates

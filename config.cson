@@ -1,12 +1,21 @@
 "*":
   "atom-spotify2":
     showEqualizer: true
+  "autocomplete-plus":
+    autoActivationDelay: 300
+    confirmCompletion: "enter"
+    maxVisibleSuggestions: 4
   "autocomplete-python": {}
   autosave:
     enabled: true
+  "base16-ocean-dark":
+    uiModification: false
   core:
     disabledPackages: [
       "vim-mode"
+      "typewriter"
+      "autocomplete-css"
+      "autocomplete-html"
     ]
     projectHome: "/Users/wilson/_dev"
     themes: [
@@ -16,7 +25,6 @@
   editor:
     autoIndentOnPaste: false
     fontFamily: "Menlo"
-    fontSize: 13
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -26,19 +34,29 @@
   "exception-reporting":
     userId: "70c999fe-be2b-a2d7-f6b3-1fb6a81372e3"
   linter:
-    errorPanelHeight: 101
+    errorPanelHeight: 25
   "linter-pep8":
     ignoreErrorCodes: [
       "E501"
     ]
   "linter-scss-lint": {}
   minimap: {}
+  "one-dark-ui":
+    layoutMode: "Compact"
   "python-tools": {}
+  react: {}
+  "tree-view": {}
   "vim-mode":
     useClipboardAsDefaultRegister: true
   "vim-mode-plus": {}
   welcome:
     showOnStartup: false
+".coffee.jsx.source":
+  editor:
+    autoIndentOnPaste: true
 ".django.python.source":
   editor:
     autoIndentOnPaste: true
+"source.gfm":
+  editor:
+    softWrap: true
