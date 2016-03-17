@@ -31,6 +31,7 @@
     softWrap: true
     softWrapAtPreferredLineLength: true
     tabType: "soft"
+  emmet: {}
   "exception-reporting":
     userId: "70c999fe-be2b-a2d7-f6b3-1fb6a81372e3"
   linter:
